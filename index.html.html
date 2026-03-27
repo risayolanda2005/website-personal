@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Wedding of Risa & Aldi</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script>
+        // Konfigurasi Warna Tema Tailwind
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        utama: '#fdfaf5', // Krem Muda
+                        aksen: '#b45309', // Amber/Emas Tua
+                        gelap: '#4a4a4a',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        .font-wedding { font-family: 'Great Vibes', cursive; }
+        body { font-family: 'Montserrat', sans-serif; scroll-behavior: smooth; background-color: #fdfaf5; color: #4a4a4a; overflow-x: hidden; }
+        
+        /* Overlay untuk foto agar teks terbaca */
+        .overlay { background: rgba(0, 0, 0, 0.5); }
+        
+        /* Efek Kaca (Glassmorphism) */
+        .glass { background: rgba(255, 255, 255, 0.25); backdrop-filter: blur(4px); border: 1px solid rgba(255, 255, 255, 0.18); }
+        
+        /* Animasi Custom */
+        @keyframes pulse-slow { 0%, 100% { opacity: 1; } 50% { opacity: 0.8; } }
+        .animate-pulse-slow { animation: pulse-slow 3s infinite; }
+    </style>
+</head>
+<body>
+
+    <audio id="lagu" loop>
+        <source src="musik.mp3" type="audio/mpeg">
+    </audio>
+
+    <section class="relative h-screen w-full flex items-center justify-center text-center text-white overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="prewedding.jpg" alt="Prewedding Risa & Aldi" class="w-full h-full object-cover scale-105 animate-pulse-slow">
+            <div class="absolute inset-0 overlay"></div>
+        </div>
+        
+        <div class="relative z-10 px-4" data-aos="zoom-in" data-aos-duration="2000">
+            <h3 class="uppercase tracking-[5px] text-sm mb-5 animate-fade-in">The Wedding Celebration of</h3>
+            <h1 class="font-wedding text-7xl md:text-9xl text-amber-200 mb-8 drop-shadow-lg">Risa & Aldi</h1>
+            <p class="text-xl italic tracking-widest mb-12">Sabtu, 27 Maret 2026</p>
+            
+            <button onclick="mulaiUndangan()" class="bg-aksen hover:bg-amber-800 text-white px-12 py-4 rounded-full text-lg font-semibold transition-all shadow-2xl animate-bounce">
+                Buka Undangan
+            </button>
+        </div>
+    </section>
+
+    <section id="mempelai" class="py-24 px-6 max-w-6xl mx-auto text-center">
+        <div data-aos="fade-up" class="mb-16">
+            <h2 class="font-wedding text-6xl text-aksen mb-4">Assalamu’alaikum Wr. Wb.</h2>
+            <p class="text-gray-600 max-w-2xl mx-auto">Dengan memohon rahmat Allah SWT, kami bermaksud mengundang Bapak/Ibu/Saudara/i untuk menghadiri pernikahan kami:</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-16 items-center">
+            <div data-aos="fade-right" class="space-y-4">
+                <h3 class="font-wedding text-5xl text-aksen">Risa Ananda, S.Kom</h3>
+                <p class="text-sm font-semibold uppercase tracking-wider">Putri Tercinta dari:</p>
+                <p class="text-gray-700">Bapak Fulan & Ibu Fulanah</p>
+            </div>
+            
+            <div data-aos="zoom-in" class="font-wedding text-7xl text-amber-300 md:block hidden">&</div>
+
+            <div data-aos="fade-left" class="space-y-4">
+                <h3 class="font-wedding text-5xl text-aksen">Aldi Pratama, M.T</h3>
+                <p class="text-sm font-semibold uppercase tracking-wider">Putra Tercinta dari:</p>
+                <p class="text-gray-700">Bapak Fulan & Ibu Fulanah</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-white py-20 px-6 border-t border-amber-100">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="font-wedding text-6xl text-aksen mb-4">Waktu & Lokasi</h2>
+                <p class="text-gray-500">Sabtu, 27 Maret 2026</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12 items-start">
+                <div class="space-y-8" data-aos="fade-right">
+                    <div class="bg-utama p-8 rounded-2xl shadow-sm border border-amber-100">
+                        <h4 class="font-bold text-aksen text-xl mb-3">Akad Nikah</h4>
+                        <p>Pukul 09.00 - 11.00 WIB</p>
+                        <p class="text-sm text-gray-600 mt-2">Gedung Pernikahan Indah, Jl. Melati No. 1, Kota</p>
+                    </div>
+                    <div class="bg-utama p-8 rounded-2xl shadow-sm border border-amber-100">
+                        <h4 class="font-bold text-aksen text-xl mb-3">Resepsi</h4>
+                        <p>Pukul 12.00 - 16.00 WIB</p>
+                        <p class="text-sm text-gray-600 mt-2">Gedung Pernikahan Indah, Jl. Melati No. 1, Kota</p>
+                    </div>
+                </div>
+
+                <div class="rounded-2xl overflow-hidden shadow-xl border-4 border-white" data-aos="fade-left">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.521260322283!2d106.81956135000001!3d-6.1947413!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f421f64f3d53%3A0x7d063717281c7e93!2sMonumen%20Nasional!5e0!3m2!1sid!2sid!4v1650000000000!5m2!1sid!2sid" 
+                        width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 px-6 bg-utama">
+        <div class="max-w-4xl mx-auto text-center card bg-white p-12 rounded-3xl shadow-lg border border-amber-100" data-aos="zoom-in">
+            <h2 class="font-wedding text-6xl text-aksen mb-6">Amplop Digital</h2>
+            <p class="text-gray-600 mb-12 max-w-xl mx-auto">Bagi Bapak/Ibu/Saudara/i yang ingin memberikan tanda kasih, dapat melalui dompet digital berikut:</p>
+            
+            <div class="flex flex-col items-center space-y-6">
+                <p class="font-bold text-lg text-gelap">Scan QR DANA</p>
+                <div class="p-4 bg-white border-2 border-aksen rounded-2xl shadow-inner">
+                    <img src="qr-dana.png" alt="QR DANA Risa & Aldi" class="w-64 h-64 object-contain">
+                </div>
+                <p class="text-sm text-gray-500 italic">a.n Risa Ananda</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="py-12 text-center bg-white border-t border-amber-100">
+        <p class="font-wedding text-3xl text-aksen mb-2">Terima Kasih</p>
+        <p class="text-gray-400 text-xs tracking-widest uppercase">Created with Love for Risa & Aldi • 2026</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        // 1. Inisialisasi AOS (Animasi Muncul)
+        AOS.init({
+            duration: 1500, // Durasi animasi (1.5 detik)
+            once: true // Animasi hanya jalan sekali saat di-scroll
+        });
+
+        // 2. Fungsi Tombol "Buka Undangan"
+        function mulaiUndangan() {
+            // Putar Musik
+            const lagu = document.getElementById('lagu');
+            lagu.play().catch(error => {
+                console.log("Browser memblokir autoplay musik. Musik akan jalan setelah interaksi.");
+            });
+
+            // Scroll Halus ke bagian Mempelai
+            document.getElementById('mempelai').scrollIntoView({ behavior: 'smooth' });
+
+            // Popup Selamat Datang (SweetAlert2)
+            Swal.fire({
+                title: 'Selamat Datang!',
+                text: 'Terima kasih telah membuka undangan pernikahan kami.',
+                icon: 'success',
+                confirmButtonColor: '#b45309', // Warna Aksen
+                timer: 3000,
+                timerProgressBar: true
+            });
+        }
+    </script>
+</body>
+</html>
